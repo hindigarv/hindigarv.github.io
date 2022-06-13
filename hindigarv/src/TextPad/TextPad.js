@@ -1,8 +1,9 @@
 import React, { useState, useRef } from "react";
 
+import "./TextPad.css"
 import parseCSV from "./csv-parser"
-
 import {csvContent} from "./csv-content"
+import Result from "./Result/Result"
 
 function TextPad() {
 
@@ -12,12 +13,28 @@ function TextPad() {
   const handleChange = (e) => {
     let text = e.target.value
       setState(text);
+
+      // let wordsFound = [...new Set(text.trim().split(/\s+/))]
       let wordsFound = text.trim().split(/\s+/)
                 .map(it => expandedDict[it])
                 .filter(it => it!=undefined)
                 .filter(it => typeof it === 'object');
-                console.log("wordsFound = ", wordsFound)
-                setWords(wordsFound)
+
+      // Find counts
+      let counts = wordsFound.reduce((p, word) => {
+        if (!p.hasOwnProperty(word.word)) {
+          p[word.word] = 0;
+        }
+        p[word.word]++;
+        return p;
+      }, {});
+
+      // Update words with count property
+      wordsFound.map(it => it.count=counts[it.word])
+
+      // Remove duplicares
+      wordsFound = wordsFound.filter((v,i,a)=>a.findIndex(v2=>(v2.word===v.word))===i)
+      setWords(wordsFound)
     };
 
   const arrayToWordObj = (headerRow, dataRow) => {
@@ -51,13 +68,11 @@ function TextPad() {
   // console.log("expandedDict = ", expandedDict)
 
   return (
-    <div>
-    <textarea cols={120} rows={15} value={state} onChange={handleChange} />
-    <div>
-      <ul>
-      {words.map((word) => <li>{word.word}</li>)}
-      </ul>
-    </div>
+    <div className="TextPad" style={{ display: 'flex', height: '100%' }}>
+      <div style={{ flexGrow: 1 }}>
+        <textarea cols={120} rows={15} value={state} onChange={handleChange} />
+        <Result words={words} />
+      </div>
     </div>
   );
 }
