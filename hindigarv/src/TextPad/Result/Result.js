@@ -6,7 +6,7 @@ function Result(props) {
     { field: 'count', headerName: 'Count' },
     { field: 'word', headerName: 'शब्द' },
     { field: 'mool', headerName: 'मूल' },
-    { field: 'paryay', headerName: 'पर्याय' },
+    { field: 'paryay', headerName: 'पर्याय', width: '100%' },
   ];
 
   let rows = props.words.map(it => ({...it, id:it.word}) )
