@@ -68,9 +68,9 @@ function TextPad() {
   // console.log("expandedDict = ", expandedDict)
 
   return (
-    <div className="TextPad" style={{ display: 'flex', height: '100%' }}>
+    <div className="TextPad" style={{ display: 'flex', height: '100%', width:'80%' }}>
       <div style={{ flexGrow: 1 }}>
-        <textarea cols={120} rows={15} value={state} onChange={handleChange} />
+        <textarea rows={15} value={state} onChange={handleChange} style={{width: '100%'}} />
         <Result words={words} />
       </div>
     </div>

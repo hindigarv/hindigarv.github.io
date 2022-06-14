@@ -12,12 +12,13 @@ function Result(props) {
   let rows = props.words.map(it => ({...it, id:it.word}) )
 
   return (
-      <div style={{ display: 'flex', height: '100%' }}>
+      <div style={{  width: '100%' }}>
         <div style={{ flexGrow: 1 }}>
           <DataGrid
             rows={rows}
             columns={columns}
             autoHeight
+            disableSelectionOnClick
           />
         </div>
       </div>
