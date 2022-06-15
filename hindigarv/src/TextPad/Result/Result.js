@@ -3,10 +3,10 @@ import { DataGrid } from '@mui/x-data-grid';
 function Result(props) {
 
   const columns = [
-    { field: 'count', headerName: 'Count' },
-    { field: 'word', headerName: 'शब्द' },
-    { field: 'mool', headerName: 'मूल' },
-    { field: 'paryay', headerName: 'पर्याय', width: '100%' },
+    { field: 'count', headerName: 'Count', width: 20 },
+    { field: 'word', headerName: 'शब्द', flex: 1 },
+    { field: 'mool', headerName: 'मूल', flex: 1 },
+    { field: 'paryay', headerName: 'पर्याय', flex: 3 },
   ];
 
   let rows = props.words.map(it => ({...it, id:it.word}) )
