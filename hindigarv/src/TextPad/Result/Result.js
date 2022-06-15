@@ -3,8 +3,13 @@ import { DataGrid } from '@mui/x-data-grid';
 function Result(props) {
 
   const columns = [
-    { field: 'count', headerName: 'Count', width: 20 },
-    { field: 'word', headerName: 'शब्द', flex: 1 },
+    { 
+      field: 'word', headerName: 'शब्द', flex: 1,
+      valueGetter: (params) => {
+        let count = params.row.count > 1 ? ` (${params.row.count})` : ""
+        return `${params.row.word}${count}`
+      }
+    },
     { field: 'mool', headerName: 'मूल', flex: 1 },
     { field: 'paryay', headerName: 'पर्याय', flex: 3 },
   ];
@@ -19,6 +24,7 @@ function Result(props) {
             columns={columns}
             autoHeight
             disableSelectionOnClick
+            etRowHeight={() => "auto"}
           />
         </div>
       </div>
