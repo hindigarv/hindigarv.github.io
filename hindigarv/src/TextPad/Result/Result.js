@@ -24,7 +24,6 @@ function Result(props) {
             columns={columns}
             autoHeight
             disableSelectionOnClick
-            etRowHeight={() => "auto"}
           />
         </div>
       </div>
