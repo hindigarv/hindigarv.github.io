@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Grid from '@mui/material/Grid';
 
 import "./TextPad.css"
@@ -18,7 +18,7 @@ function TextPad() {
       // let wordsFound = [...new Set(text.trim().split(/\s+/))]
       let wordsFound = text.trim().split(/\s+/)
                 .map(it => expandedDict[it])
-                .filter(it => it!=undefined)
+                .filter(it => it!==undefined)
                 .filter(it => typeof it === 'object');
 
       // Find counts
@@ -52,7 +52,7 @@ function TextPad() {
       eDict[word.word] = word;
       word.roop.split(",")
       .map(roop => roop.trim())
-      .filter(roop => roop != "")
+      .filter(roop => roop !== "")
       .forEach(roop => {
         eDict[roop] = word;
       });

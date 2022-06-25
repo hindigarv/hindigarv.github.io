@@ -18,29 +18,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 }));
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
-    backgroundColor: theme.palette.action.hover,
-  },
-  // hide last border
-  '&:last-child td, &:last-child th': {
-    border: 0,
-  },
-}));
-
 function Result(props) {
-
-  const columns = [
-    { 
-      field: 'word', headerName: 'शब्द', flex: 1,
-      valueGetter: (params) => {
-        let count = params.row.count > 1 ? ` (${params.row.count})` : ""
-        return `${params.row.word}${count}`
-      }
-    },
-    { field: 'mool', headerName: 'मूल', flex: 1 },
-    { field: 'paryay', headerName: 'पर्याय', flex: 3 },
-  ];
 
   let rows = props.words.map(it => ({...it, id:it.word}) )
 
@@ -48,7 +26,7 @@ function Result(props) {
       <div style={{  width: '100%' }}>
         <div style={{ flexGrow: 1 }}>
           <TableContainer component={Paper}>
-            <Table aria-label="simple table">
+            <Table sx={{ minWidth: 50 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
                   <StyledTableCell>शब्द</StyledTableCell>
@@ -57,16 +35,19 @@ function Result(props) {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row) => (
-                  <TableRow
-                    key={row.word}
-                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                  >
-                    <TableCell component="th" scope="row">{row.word}</TableCell>
-                    <TableCell>{row.mool}</TableCell>
-                    <TableCell>{row.paryay}</TableCell>
-                  </TableRow>
-                ))}
+                {rows.map((row) => {
+                  let count = row.count > 1 ? ` (${row.count})` : ""
+                  return (
+                    <TableRow
+                      key={row.word}
+                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    >
+                      <TableCell component="th" scope="row">{row.word}{count}</TableCell>
+                      <TableCell>{row.mool}</TableCell>
+                      <TableCell>{row.paryay}</TableCell>
+                    </TableRow>
+                  )
+                })}
               </TableBody>
             </Table>
           </TableContainer>
