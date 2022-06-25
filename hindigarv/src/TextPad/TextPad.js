@@ -72,6 +72,7 @@ function TextPad() {
       <div style={{display:"flex"}}>
         <textarea rows={15} value={state} onChange={handleChange} style={{width: '100%'}} />
       </div>
+      <div>A</div>
       <Result words={words} />
     </div>
   );
