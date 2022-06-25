@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import Grid from '@mui/material/Grid';
 
 import "./TextPad.css"
 import parseCSV from "./csv-parser"
@@ -68,13 +69,14 @@ function TextPad() {
   // console.log("expandedDict = ", expandedDict)
 
   return (
-    <div className="TextPad" style={{ height: '100%', width:'90%' }}>
-      <div style={{display:"flex"}}>
+    <Grid container justifyContent="center" >
+      <Grid item xs={10}>
         <textarea rows={15} value={state} onChange={handleChange} style={{width: '100%'}} />
-      </div>
-      <div>A</div>
-      <Result words={words} />
-    </div>
+      </Grid>
+      <Grid item xs={10}>
+        <Result words={words} />
+      </Grid>
+    </Grid>
   );
 }
 
