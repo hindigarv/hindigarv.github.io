@@ -1,9 +1,7 @@
+import {useState} from "react";
+import {find} from "./hindigarv.js"
 const Main = function() {
-    return (
-        <div className="main roundedCorner">
-        <textarea className="editor roundedCorner">
-            {
-                `हिन्दी गर्व में आप का स्वागत है।
+    const initialText = `हिन्दी गर्व में आप का स्वागत है।
 क्या आप को जानना है कि आप की हिन्दी में कोई विदेशी भाषा के शब्द है कि नहीं?
 तो इस विभाग में अपना वाक्य लिखे।
 
@@ -13,9 +11,22 @@ const Main = function() {
 
 उपरोक्त वाक्य में "साल" एक फ़ारसी शब्द है
 TODO
-`
-            }
-</textarea>
+TODO2
+`;
+
+    const [text, setText] = useState(initialText)
+
+    const handleChange = function(event) {
+        // console.log(event.target)
+        let t = event.target.value;
+        // console.log(event.target.value)
+        let r = find(t);
+        // console.log(r);
+    }
+
+    return (
+        <div className="main roundedCorner">
+            <textarea className="editor roundedCorner" onChange={handleChange} defaultValue={text} />
         </div>
     );
 };
