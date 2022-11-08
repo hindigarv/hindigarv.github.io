@@ -21,7 +21,7 @@ TODO2
         let t = event.target.value;
         // console.log(event.target.value)
         let r = find(t);
-        // console.log(r);
+        console.log(r);
     }
 
     return (
