@@ -20,14 +20,17 @@ body {
 
 .editor {
   width: 50%;
-  height: 94vh;
-  padding: 1vh;
+  height: 92vh;
+  padding: 2vh;
   background-color: papayawhip;
   /* height: 500px; TODO remove this */
   border: none;
   line-height: 1.5;
   display: block;
   resize: none;
+  font-size: 1rem;
+  color: #4c473f;
+  font-weight: 600;
 }
 
 .editor:focus {
