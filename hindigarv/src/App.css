@@ -19,14 +19,14 @@ body {
 }
 
 .editor {
-  width: 50%;
+  width: 48%;
   height: 92vh;
   padding: 2vh;
   background-color: papayawhip;
   /* height: 500px; TODO remove this */
   border: none;
   line-height: 1.5;
-  display: block;
+  /*display: block;*/
   resize: none;
   font-size: 1rem;
   color: #4c473f;
@@ -35,4 +35,12 @@ body {
 
 .editor:focus {
   outline: none;
+}
+
+.result {
+  /*background-color: lightblue;*/
+  width: 45%;
+  height: 92vh;
+  float: right;
+  padding: 2vh;
 }
