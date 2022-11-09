@@ -27,7 +27,7 @@ const Main = function () {
             <textarea className="editor roundedCorner" onChange={handleChange} defaultValue={text}/>
             <div className="result ">
                 <ul>
-                    {result.map(word => <li>{word.shabda} ({word.mool}) -> {word.paryaya}</li>)}
+                    {result.map(word => <li key={word.shabda}>{word.shabda} ({word.mool}) -> {word.paryaya}</li>)}
                 </ul>
             </div>
         </div>
