@@ -1,46 +1,105 @@
+:root {
+  --paper: hsl(47, 79%, 87%);
+  --dark-paper: rgb(216, 217, 181);
+}
+
 body {
-  height: 100%;
-  min-height: 100vh;
-  box-sizing: border-box;
   margin: 0;
-  padding: 1vh;
+  /*display: grid;*/
+  /*min-height: 100vh;*/
+  background-color: var(--paper);
+  /* background-image: url(../img/paper.jpeg); */
 }
 
-.roundedCorner {
-  border-radius: 20px;
+#root {
+  min-height: 100vh;
+  display: grid;
+  height: 100%;
 }
 
-.main {
-  background-color: lightgray;
-  /* position: absolute; */
-  height: 96vh;
-  width: calcl(100%-1vh);
-  padding: 1vh;
+@media (orientation: landscape) {
+  #root {
+    grid-template-columns: 96% 4%;
+  }
+}
+@media (orientation: portrait) {
+  #root {
+    grid-template-rows: 96% 4%;
+  }
 }
 
-.editor {
-  width: 48%;
-  height: 92vh;
-  padding: 2vh;
-  background-color: papayawhip;
-  /* height: 500px; TODO remove this */
-  border: none;
-  line-height: 1.5;
-  /*display: block;*/
-  resize: none;
+main {
+  display: grid;
+  background-color: var(--dark-paper);
+  border-radius: 25px;
+  margin: 0.5rem;
+}
+@media (orientation: landscape) {
+  main {
+    grid-template-columns: 50% 50%;
+  }
+}
+@media (orientation: portrait) {
+  main {
+    grid-template-rows: 50% 50%;
+  }
+}
+
+.in {
+  background-color: #f8ecc2;
+  margin: 0.5rem;
+  border-radius: 25px;
+  /* background-image: url(../img/paper.jpeg); */
+}
+
+.in .editor {
+  background-color: transparent;
   font-size: 1rem;
-  color: #4c473f;
-  font-weight: 600;
+  color: hsl(349, 72%, 24%);
+  width: calc(100% - 2rem);
+  height: calc(100% - 2rem);
+  margin: 1rem;
+  border: none;
+  resize: none;
 }
 
-.editor:focus {
+.in .editor:focus {
   outline: none;
 }
 
-.result {
-  /*background-color: lightblue;*/
-  width: 45%;
-  height: 92vh;
-  float: right;
-  padding: 2vh;
+.out {
+  /* background-color: gray; */
+  margin: 0.5rem;
+  border-radius: 25px;
+  /* color: papayawhip; */
 }
+
+.side {
+  /* background-color: aquamarine; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  margin-right: 0.5rem;
+}
+@media (orientation: landscape) {
+  .side {
+    flex-direction: column;
+  }
+}
+@media (orientation: portrait) {
+  .side {
+    flex-direction: row;
+  }
+}
+
+.side .icon {
+  display: inline-flex;
+  /* background-color: darkgoldenrod; */
+}
+
+.icon a img {
+  height: 100%;
+  width: auto;
+}
+

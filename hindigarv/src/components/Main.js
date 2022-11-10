@@ -23,14 +23,36 @@ const Main = function () {
     }
 
     return (
-        <div className="main roundedCorner">
-            <textarea className="editor roundedCorner" onChange={handleChange} defaultValue={text}/>
-            <div className="result ">
-                <ul>
-                    {result.map(word => <li key={word.shabda}>{word.shabda} ({word.mool}) -> {word.paryaya}</li>)}
-                </ul>
+        <>
+            <main>
+                <div className="in">
+                    <textarea className="editor" onChange={handleChange} defaultValue={text}></textarea>
+                </div>
+                <div className="out">
+                    <ul>
+                        {result.map(word => <li key={word.shabda}>{word.shabda} ({word.mool}) -> {word.paryaya}</li>)}
+                    </ul>
+                </div>
+            </main>
+            <div className="side">
+                <div className="icon">
+                    <a href="http://www.t.co/1123">
+                        <img src="./img/icons8-twitter-48.png" height="48" width="48" />
+                    </a>
+                </div>
+                <div className="icon">
+                    <a href="http://www.google.com/123">
+                        <img src="./img/icons8-chrome-48.png" alt="Install Chrome Extension" height="48" width="48" />
+                    </a>
+                </div>
+                <div className="icon">
+                    <a href="http://www.google.com/123">
+                        <img src="./img/icons8-telegram-app-48.png" alt="Checkout the Telegram bot"
+                             height="48" width="48" />
+                    </a>
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 export default Main;
