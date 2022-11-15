@@ -55,7 +55,8 @@ export const find = (str) => {
         return;
     }
     // return [];
-    return str.split(" ")
+    const splitRe = new RegExp(/[\s\-\[\],। .?!#_*%"”“'‘’:;|~^&+=/<>{}()…]/gm);
+    return str.split(splitRe)
         .map(token => token.trim())
         .filter(token => token !== "")
         .map(token => token.removeNukta())
