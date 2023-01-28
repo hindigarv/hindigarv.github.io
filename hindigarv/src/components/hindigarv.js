@@ -54,8 +54,8 @@ export const find = (str) => {
         console.log("shabdakosha is not initialized yet.")
         return;
     }
-    const splitRe = new RegExp(/[\s\-\[\],। .?!#_*%"”“'‘’:;|~^&+=/<>{}()…]/gm);
-    return str.split(splitRe)
+    const splitRe = new RegExp(/[\s\-\[\],। .?!#_*%"”“'‘’:;|~^&+=/<>{}()…॰०१२३४५६७८९0123456789]/gm);
+    let tokens = str.split(splitRe)
         .map(token => token.trim())
         .filter(token => token !== "")
         .map(token => token.removeNukta());
