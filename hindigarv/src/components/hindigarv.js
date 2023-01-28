@@ -58,7 +58,9 @@ export const find = (str) => {
     return str.split(splitRe)
         .map(token => token.trim())
         .filter(token => token !== "")
-        .map(token => token.removeNukta())
+        .map(token => token.removeNukta());
+    tokens = [...new Set(tokens)]
+    return tokens
         .map(token => shabdakosha[token])
-        .filter(token => token != null)
+        .filter(shabda => shabda != null)
 }
