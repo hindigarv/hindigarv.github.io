@@ -34,6 +34,7 @@ function getRoops(word) {
 }
 
 let shabdakosha = null;
+let isReady = false;
 
 Papa.parse(url, {
     download: true,
@@ -46,11 +47,12 @@ Papa.parse(url, {
                 return acc;
             }, {})
         console.log("shabdakosha is ready")
+        isReady = true;
     }
 })
 
 export const find = (str) => {
-    if (shabdakosha == null) {
+    if (!isShabdakoshaReady()) {
         console.log("shabdakosha is not initialized yet.")
         return;
     }
@@ -65,4 +67,4 @@ export const find = (str) => {
         .filter(shabda => shabda != null)
 }
 
-export const isShabdakoshaReady = () => shabdakosha !== undefined
+export const isShabdakoshaReady = () => isReady

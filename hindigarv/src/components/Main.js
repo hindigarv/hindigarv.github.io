@@ -3,7 +3,6 @@ import {find} from "./hindigarv.js"
 import SideBar from "./SideBar";
 import useHindigarv from "../useHindigarv";
 import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
 
 const Main = function () {
     const initialText = `हिन्दी गर्व में आप का स्वागत है।
@@ -20,16 +19,14 @@ const Main = function () {
 `;
 
     const [text, setText] = useState(initialText)
-    const [result, setResult] = useState(find(text))
+    const [result, setResult] = useState()
     const {isReady} = useHindigarv()
 
-    useEffect(() => setResult(find(text)), [text, isReady])
-
-    if (!isReady) {
-        return <Box sx={{display: 'flex'}}>
-            <CircularProgress/>
-        </Box>
-    }
+    useEffect(() => {
+        if (isReady) {
+            setResult(find(text));
+        }
+    }, [text, isReady])
 
     return (
         <>
@@ -39,7 +36,8 @@ const Main = function () {
                               defaultValue={text}></textarea>
                 </div>
                 <div className="out">
-                    {result && <ul>
+                    {!isReady && <CircularProgress/>}
+                    {isReady && result && <ul>
                         {result.map(word => <li key={word.shabda}>{word.shabda} ({word.mool}) -> {word.paryaya}</li>)}
                     </ul>
                     }
