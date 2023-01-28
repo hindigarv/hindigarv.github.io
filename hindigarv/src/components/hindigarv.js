@@ -64,3 +64,5 @@ export const find = (str) => {
         .map(token => shabdakosha[token])
         .filter(shabda => shabda != null)
 }
+
+export const isShabdakoshaReady = () => shabdakosha !== undefined

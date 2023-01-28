@@ -1,5 +1,9 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {find} from "./hindigarv.js"
+import SideBar from "./SideBar";
+import useHindigarv from "../useHindigarv";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 const Main = function () {
     const initialText = `हिन्दी गर्व में आप का स्वागत है।
@@ -17,16 +21,22 @@ const Main = function () {
 
     const [text, setText] = useState(initialText)
     const [result, setResult] = useState(find(text))
+    const {isReady} = useHindigarv()
 
-    const handleChange = function (event) {
-        setResult(find(event.target.value));
+    useEffect(() => setResult(find(text)), [text, isReady])
+
+    if (!isReady) {
+        return <Box sx={{display: 'flex'}}>
+            <CircularProgress/>
+        </Box>
     }
 
     return (
         <>
             <main>
                 <div className="in">
-                    <textarea className="editor" onChange={handleChange} defaultValue={text}></textarea>
+                    <textarea className="editor" onChange={event => setText(event.target.value)}
+                              defaultValue={text}></textarea>
                 </div>
                 <div className="out">
                     {result && <ul>
